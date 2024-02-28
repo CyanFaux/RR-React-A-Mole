@@ -1,24 +1,26 @@
-import {useEffect} from 'react'
-import moleImg from '../mole.png'// Well...wherever you stored your moleImg.
+import { useEffect } from "react";
+import moleImg from "../mole.png"; // Well...wherever you stored your moleImg.
 
-function Mole(props){
-    useEffect(() => {
-        // Feel free to adjust this number as you see fit.
-        // It is your game to tune!
-        let randSeconds = Math.ceil(Math.random() * 5000)
-        let timer = setTimeout(() => {
-            props.setDisplayMole(false)
-        }, randSeconds)
-        return () => clearTimeout(timer)
-    }, [props.setDisplayMole])
+function Mole(props) {
+  useEffect(() => {
+    // Feel free to adjust this number as you see fit.
+    // It is your game to tune!
+    let randSeconds = Math.ceil(Math.random() * 5000);
+    let timer = setTimeout(() => {
+      props.toggle(false);
+    }, randSeconds);
+    return () => clearTimeout(timer);
+  });
 
-    return (
-        <div>
-            <img style={{'width': '30vw'}}
-            src={moleImg}
-            onClick={props.handleClick} />
-        </div>
-    )
+  return (
+    <div>
+      <img
+        style={{ width: "30vw" }}
+        src={moleImg}
+        onClick={props.handleClick}
+      />
+    </div>
+  );
 }
 
-export default Mole
+export default Mole;
